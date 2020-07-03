@@ -59,11 +59,11 @@ COPY ./entrypoint.prod.sh $APP_HOME
 # copy project
 COPY . $APP_HOME
 
-# chown all the files to the app user
-RUN chown -R app:app $APP_HOME
-
 # change to the app user
 USER app
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
 
 # run entrypoint.prod.sh
 ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
