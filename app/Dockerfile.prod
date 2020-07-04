@@ -14,10 +14,10 @@ ENV PYTHONUNBUFFERED 1
 # create the appropriate directories
 
 ENV HOME=/home/app
-ENV APP_HOME=/home/app
-RUN mkdir /APP_HOME
-RUN mkdir /APP_HOME/staticfiles
-WORKDIR $APP_HOME
+ENV APP_HOME=app
+RUN mkdir staticfiles
+RUN chmod -R 755 /app/staticfiles
+WORKDIR /APP_HOME
 
 # install psycopg2 dependencies
 RUN apk update \
@@ -66,4 +66,4 @@ USER app
 # RUN chown -R app:app $APP_HOME
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.prod.sh"]
+# ENTRYPOINT ["./entrypoint.prod.sh"]
